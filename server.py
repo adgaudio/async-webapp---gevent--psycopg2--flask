@@ -10,12 +10,10 @@ sys.path.insert(0, configuration.PROJ_DIR)
 
 
 
-def start_server(address='localhost:8000'):
+def start_server(host='localhost', port=8000):
     from gevent.wsgi import WSGIServer
     from app import app
 
-    host, port = address.split(':')
-    port = int(port)
     http_server = WSGIServer((host, port), app)
     print 'server started:   http://%s:%s\n' % (host, port)
     http_server.serve_forever()
@@ -29,7 +27,7 @@ def main():
     (options, args) = parser.parse_args()
     if options.run_server:
         start_server(*args)
-    
+
 
 if __name__ == '__main__':
     main()
