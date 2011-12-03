@@ -39,7 +39,7 @@ class DbPool(object):
         if self.connections:
             conn = self.connections.pop()
         else:
-            conn = psycopg2.connect(configuration.DATABASES['default'])
+            conn = psycopg2.connect(**configuration.DATABASES['default'])
         return conn
 
     def free(self, conn):

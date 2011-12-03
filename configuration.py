@@ -4,12 +4,20 @@ PROJ_DIR = os.path.dirname(__file__)
 TEMPLATES = (
     os.path.join(PROJ_DIR, 'templates')
 )
+
 DATABASES = {
+        "default": {
+            "database":"test",
+            "user":"alex",
+            "password":"secret"
+            }
 }
+
 APPLICATIONS = (
     'posts',
     'tags',
 )
+
 DEBUG = True
 
 try:
