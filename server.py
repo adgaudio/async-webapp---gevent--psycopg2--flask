@@ -13,9 +13,8 @@ sys.path.insert(0, configuration.PROJ_DIR)
 def start_server(host='localhost', port=8000):
     from gevent.wsgi import WSGIServer
     from app import app
-
     http_server = WSGIServer((host, port), app)
-    print 'server started:   http://%s:%s\n' % (host, port)
+    print 'server starting:   http://%s:%s\n' % (host, port)
     http_server.serve_forever()
 
 

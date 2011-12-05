@@ -7,6 +7,23 @@ from flask import Flask
 import configuration
 
 app = Flask(__name__)
+
+def app(env, start_response):
+    """Another example application for gevent wsgi server"""
+    if env['PATH_INFO'] == '/':
+        start_response('200 OK', [('Content-Type', 'text/html')])
+        return ["<b>hello world</b>"]
+    else:
+        start_response('404 Not Found', [('Content-Type', 'text/html')])
+        return ['<h1>Not Found</h1>']
+
+
+def app(environment, start_response):
+    """Yet another example application for gevent wsgi server"""
+    start_response("200 OK", [("Content-Type", "text/html; charset=utf-8")])
+    print 'in app'
+    return ["hello, world!"]
+
 app.debug = configuration.DEBUG
 
 # Import applications into namespace
